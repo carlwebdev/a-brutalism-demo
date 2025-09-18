@@ -12,16 +12,23 @@
 <body>
 
     <header>
-        <nav class="nav">
+        <nav class="nav" id="primary-navigation">
             <a href="#">HOME</a>
             <a href="#">ABOUT</a>
             <a href="#">WORK</a>
             <a href="#">CONTACT</a>
         </nav>
-        <menu class="">
-            <a href="#">LIGHT</a>
-            <a href="#">DARK</a>
-        </menu>
+        <div class="header-controls">
+            <menu class="">
+                <a href="#">LIGHT</a>
+                <a href="#">DARK</a>
+            </menu>
+            <button class="hamburger" type="button" aria-label="Toggle navigation" aria-controls="primary-navigation" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
     </header>
     
     <div class="hero">
@@ -111,5 +118,18 @@
     
 
     
+
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navigation = document.getElementById('primary-navigation');
+
+        if (hamburger && navigation) {
+            hamburger.addEventListener('click', () => {
+                const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+                hamburger.setAttribute('aria-expanded', (!isExpanded).toString());
+                navigation.classList.toggle('is-open', !isExpanded);
+            });
+        }
+    </script>
 </body>
 </html>

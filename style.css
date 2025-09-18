@@ -40,8 +40,33 @@ header {
     padding-inline: 3em;
     padding-inline: 6em;
     */
-    
-    
+
+
+}
+
+
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    background: transparent;
+    border: 1px solid var(--c-text);
+    padding: 12px 10px;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 24px;
+    height: 2px;
+    background-color: var(--c-text);
+    display: block;
 }
 
 
@@ -358,7 +383,7 @@ section {
     border-top: 1px solid var(--c-text);
     background-color: var(--c-bg);
     color: var(--c-text);
-    
+
     padding-inline: 3em;
     /* padding-inline: 6em; */
     /* padding-block: 3em;*/
@@ -372,7 +397,7 @@ section {
     gap: 40px;
 
     /* padding-block: 6em; */
-    padding-block: 4em; 
+    padding-block: 4em;
 }
 
 .footer-item a {
@@ -387,5 +412,57 @@ section {
 
 .footer-bottom {
     /* border-top: 1px solid var(--c-text); */
-    padding-block: 2em;  
+    padding-block: 2em;
+}
+
+
+@media (max-width: 768px) {
+    header {
+        flex-wrap: wrap;
+        gap: 1.5em;
+        padding-inline: 1.5em;
+    }
+
+    .header-controls {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    nav.nav,
+    menu {
+        padding: 0;
+        padding-inline: 1.5em;
+    }
+
+    nav.nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        padding-block: 1em;
+        gap: 0;
+        border-top: 1px solid var(--c-text);
+    }
+
+    nav.nav.is-open {
+        display: flex;
+    }
+
+    nav.nav a {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--c-text);
+        padding: 1em 0.5em;
+    }
+
+    nav.nav a:last-child {
+        border-bottom: none;
+    }
+
+    menu a {
+        padding: 1em 1.5em;
+    }
+
+    .hamburger {
+        display: inline-flex;
+    }
 }
