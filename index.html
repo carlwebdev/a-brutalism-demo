@@ -24,7 +24,13 @@
 <body>
 
     <header>
-        <nav class="nav">
+        <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="primary-navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="nav-toggle__bar" aria-hidden="true"></span>
+            <span class="nav-toggle__bar" aria-hidden="true"></span>
+            <span class="nav-toggle__bar" aria-hidden="true"></span>
+        </button>
+        <nav class="nav" id="primary-navigation">
             <a href="#">HOME</a>
             <a href="#">ABOUT</a>
             <a href="#">WORK</a>
@@ -159,6 +165,43 @@
                     }
                 });
             });
+        })();
+
+        (function () {
+            const nav = document.querySelector('.nav');
+            const toggle = document.querySelector('.nav-toggle');
+            if (!nav || !toggle) {
+                return;
+            }
+
+            function closeNav() {
+                toggle.setAttribute('aria-expanded', 'false');
+                nav.classList.remove('is-open');
+            }
+
+            toggle.addEventListener('click', () => {
+                const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+                const nextState = !isExpanded;
+                toggle.setAttribute('aria-expanded', String(nextState));
+                nav.classList.toggle('is-open', nextState);
+            });
+
+            nav.querySelectorAll('a').forEach((link) => {
+                link.addEventListener('click', () => {
+                    if (window.matchMedia('(max-width: 768px)').matches) {
+                        closeNav();
+                    }
+                });
+            });
+
+            const mq = window.matchMedia('(min-width: 769px)');
+            if (typeof mq.addEventListener === 'function') {
+                mq.addEventListener('change', closeNav);
+            } else if (typeof mq.addListener === 'function') {
+                mq.addListener(closeNav);
+            }
+
+            closeNav();
         })();
     </script>
 
