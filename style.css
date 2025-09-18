@@ -7,13 +7,22 @@
 
 
 :root {
-    --c-text: #000;
-    --c-bg: #fff;
-    /*
+    color-scheme: dark;
     --c-text: #fff;
     --c-bg: #000;
-    */
     --ff: 'Courier New', Courier, monospace;
+}
+
+:root[data-theme="light"] {
+    color-scheme: light;
+    --c-text: #000;
+    --c-bg: #fff;
+}
+
+:root[data-theme="dark"] {
+    color-scheme: dark;
+    --c-text: #fff;
+    --c-bg: #000;
 }
 
 
@@ -21,9 +30,10 @@
 body {
     font-family: var(--ff);
     /* font-family: 'Times New Roman', Times, serif, monospace; */
-    background: var(--c-text);
-    color: var(--c-bg);
+    background: var(--c-bg);
+    color: var(--c-text);
     line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 
@@ -47,43 +57,50 @@ header {
 
 nav.nav,
 menu {
-    /* background: var(--c-bg); */
-    /* padding: 20px; */
-    /* border: 3px solid #000; */
-    /* padding-inline: 3em; */
     padding-inline: 6em;
-    /* padding-block: 2em; */
-
-
-    /* background-color: var(--c-bg); */
-    /*  padding: 2px;*/
-
     display: flex;
     gap: 2px;
-    /*  background-color: var(--c-text); */ 
     padding: 2px;
-    /* border: 1px solid var(--c-text); */
+    list-style: none;
+}
 
-    a {
-        background-color: var(--c-bg);
-        /* color: #fff; */
-        /*
-        
-        text-decoration: none;
+nav.nav a,
+menu a,
+menu button {
+    background-color: var(--c-bg);
+    color: var(--c-text);
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 2em 3em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    border: 1px solid var(--c-text);
+    border-right: 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
 
-        */
-        /* add this to: how to make any siote trend=brutalis! */
+nav.nav a:not(:last-child),
+menu a:not(:last-child),
+menu button:not(:last-child) {
+    border-right: 1px solid var(--c-text);
+}
 
-        font-size: 24px;
-        font-weight: bold;
-        padding: 2em 3em;
-        display: inline-block;
+menu button {
+    font: inherit;
+    cursor: pointer;
+}
 
+.theme-toggle button.is-active {
+    background-color: var(--c-text);
+    color: var(--c-bg);
+}
 
-        border-right: 1px solid var(--c-text);
-
-    }    
-
+.theme-toggle button:focus-visible {
+    outline: 2px dashed var(--c-text);
+    outline-offset: 4px;
 }
 
 
