@@ -1,13 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Brutal Design</title>
     <style>
-        
+
     </style>
+    <script>
+        (function () {
+            try {
+                const storedTheme = localStorage.getItem('theme');
+                if (storedTheme) {
+                    document.documentElement.setAttribute('data-theme', storedTheme);
+                }
+            } catch (error) {
+                /* localStorage might be unavailable (e.g. privacy mode). */
+            }
+        })();
+    </script>
 </head>
 <body>
 
@@ -18,9 +30,9 @@
             <a href="#">WORK</a>
             <a href="#">CONTACT</a>
         </nav>
-        <menu class="">
-            <a href="#">LIGHT</a>
-            <a href="#">DARK</a>
+        <menu class="theme-toggle" aria-label="Theme toggle">
+            <button type="button" data-theme="light">LIGHT</button>
+            <button type="button" data-theme="dark">DARK</button>
         </menu>
     </header>
     
@@ -107,9 +119,48 @@
             <p>© BRUTAL DESIGN 2024</p>
         </div>
     </footer>
-    
-    
 
-    
+
+
+
+    <script>
+        (function () {
+            const THEME_STORAGE_KEY = 'theme';
+            const root = document.documentElement;
+            const toggleButtons = document.querySelectorAll('.theme-toggle [data-theme]');
+
+            function applyTheme(theme) {
+                root.setAttribute('data-theme', theme);
+                toggleButtons.forEach((button) => {
+                    const isActive = button.dataset.theme === theme;
+                    button.classList.toggle('is-active', isActive);
+                    button.setAttribute('aria-pressed', String(isActive));
+                });
+            }
+
+            let storedTheme = null;
+            try {
+                storedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+            } catch (error) {
+                storedTheme = null;
+            }
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const initialTheme = storedTheme || (prefersDark ? 'dark' : 'light');
+            applyTheme(initialTheme);
+
+            toggleButtons.forEach((button) => {
+                button.addEventListener('click', () => {
+                    const theme = button.dataset.theme;
+                    applyTheme(theme);
+                    try {
+                        localStorage.setItem(THEME_STORAGE_KEY, theme);
+                    } catch (error) {
+                        /* localStorage might be unavailable (e.g. privacy mode). */
+                    }
+                });
+            });
+        })();
+    </script>
+
 </body>
 </html>
