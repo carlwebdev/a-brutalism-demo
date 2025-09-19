@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Brutal Design Styleguide</title>
+    <script>
+        (function () {
+            try {
+                const storedTheme = localStorage.getItem('theme');
+                if (storedTheme) {
+                    document.documentElement.setAttribute('data-theme', storedTheme);
+                }
+            } catch (error) {
+                /* localStorage might be unavailable (e.g. privacy mode). */
+            }
+        })();
+    </script>
+</head>
+<body>
+    <header>
+        <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="primary-navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="nav-toggle__bar" aria-hidden="true"></span>
+            <span class="nav-toggle__bar" aria-hidden="true"></span>
+            <span class="nav-toggle__bar" aria-hidden="true"></span>
+        </button>
+        <nav class="nav" id="primary-navigation">
+            <a href="index.html#hero">HOME</a>
+            <a href="index.html#about">ABOUT</a>
+            <a href="index.html#manifesto">MANIFESTO</a>
+            <a href="index.html#process">PROCESS</a>
+            <a href="index.html#products">WORK</a>
+            <a href="index.html#contact">CONTACT</a>
+            <a aria-current="page" href="styleguide.html">STYLEGUIDE</a>
+        </nav>
+        <menu class="theme-toggle" aria-label="Theme toggle">
+            <button type="button" data-theme="light">LIGHT</button>
+            <button type="button" data-theme="dark">DARK</button>
+        </menu>
+    </header>
+
+    <main class="styleguide-main">
+        <section class="styleguide-section">
+            <h1>Brutalist Interface Styleguide</h1>
+            <p>This companion page documents the core ingredients of the demo—use it to keep future pages aligned with the studio’s raw identity.</p>
+            <div class="styleguide-callout">
+                <span>Pro Tip</span>
+                <p>Mix high-contrast blocks with generous negative space. Brutalism thrives on tension between rigid systems and loud disruptions.</p>
+            </div>
+        </section>
+
+        <section class="styleguide-section" id="color-system">
+            <h2>Color System</h2>
+            <p>Lean on a monochrome base and deploy accent shots sparingly for moments of emphasis or interaction.</p>
+            <div class="swatch-grid">
+                <div class="swatch is-dark">
+                    <strong>Background</strong>
+                    <span>#000000</span>
+                </div>
+                <div class="swatch is-light">
+                    <strong>Foreground</strong>
+                    <span>#FFFFFF</span>
+                </div>
+                <div class="swatch is-accent">
+                    <strong>Accent</strong>
+                    <span>var(--c-accent)</span>
+                </div>
+                <div class="swatch">
+                    <strong>Signal Red</strong>
+                    <span>var(--c-accent-strong)</span>
+                </div>
+                <div class="swatch">
+                    <strong>Muted</strong>
+                    <span>var(--c-muted)</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="styleguide-section" id="typography">
+            <h2>Typography</h2>
+            <p>Typography is utilitarian and loud. Use monospace families to echo terminal aesthetics and set generous tracking for titles.</p>
+            <div class="type-stack">
+                <div class="type-sample">
+                    <span>Display</span>
+                    <h2>BRUTAL DESIGN NETWORK</h2>
+                    <p>Clamp sizing keeps the headline responsive without losing its impact.</p>
+                </div>
+                <div class="type-sample">
+                    <span>Body</span>
+                    <p>Body copy keeps the pace steady. Maintain 1.6 line height and limit paragraphs to 60 characters per line to balance legibility with aggression.</p>
+                </div>
+                <div class="type-sample">
+                    <span>Meta Labels</span>
+                    <p style="letter-spacing: 0.35em; text-transform: uppercase;">SUBHEADS SHOULD FEEL LIKE STAMPED LABELS.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="styleguide-section" id="layout">
+            <h2>Layout &amp; Grid</h2>
+            <p>Keep the grid visible. Use thick rules, exposed borders, and layered cards to create depth without gradients.</p>
+            <ul>
+                <li>Use 2–4 column layouts with generous gutters for desktop, collapsing to a single column on mobile.</li>
+                <li>Border weight should stay between 2–3px for structural elements.</li>
+                <li>Alternate block rotations or offsets by 2–6 degrees to keep compositions unsettled.</li>
+            </ul>
+        </section>
+
+        <section class="styleguide-section" id="components">
+            <h2>Core Components</h2>
+            <div class="component-grid">
+                <div class="component-preview">
+                    <h3>Buttons</h3>
+                    <div class="demo-buttons">
+                        <button type="button">Default Action</button>
+                        <button type="button" class="is-accent">Accent Action</button>
+                    </div>
+                    <p>Pair heavy borders with abrupt hover states. Consider animating subtle translations for tactile feedback.</p>
+                </div>
+                <div class="component-preview">
+                    <h3>Cards</h3>
+                    <div class="demo-card">
+                        <span style="letter-spacing: 0.4em;">CASE 07</span>
+                        <strong>Signal Jam UI</strong>
+                        <p>Evidence of layered textures, glitch artifacts, and unapologetic copywriting.</p>
+                    </div>
+                    <p>Cards may rotate slightly or stack like print proofs. Keep the border visible at all times.</p>
+                </div>
+                <div class="component-preview">
+                    <h3>Form Elements</h3>
+                    <div class="demo-card">
+                        <label for="demo-name">YOUR NAME</label>
+                        <input id="demo-name" type="text" class="brutal-input" placeholder="JOAN DOE">
+                        <label for="demo-email">YOUR EMAIL</label>
+                        <input id="demo-email" type="email" class="brutal-input" placeholder="HEY@BRUTAL.STUDIO">
+                    </div>
+                    <p>Inputs stay flat with one-pixel offsets. Use uppercase placeholders and high-contrast focus states.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="styleguide-section" id="motion">
+            <h2>Motion &amp; Interaction</h2>
+            <ul>
+                <li>Introduce micro-glitches via keyframe jitter or blend-mode overlays.</li>
+                <li>Prefer linear, snappy transitions (0.2–0.3s) to maintain the brutalist punch.</li>
+                <li>Scroll-triggered marquee or ticker elements add rhythm without needing video.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="brutal-footer">
+        <div class="footer-grid">
+            <div class="footer-item">
+                <h3>BRUTAL STUDIO</h3>
+                <p>STYLEGUIDE 2024</p>
+            </div>
+            <div class="footer-item">
+                <h3>LINKS</h3>
+                <a href="index.html#hero">RETURN TO DEMO</a>
+                <a href="index.html#suggestions">CONTENT IDEAS</a>
+                <a href="index.html#products">SHOP MODULE</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© BRUTAL DESIGN SYSTEM 2024</p>
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+            const THEME_STORAGE_KEY = 'theme';
+            const root = document.documentElement;
+            const toggleButtons = document.querySelectorAll('.theme-toggle [data-theme]');
+
+            function applyTheme(theme) {
+                root.setAttribute('data-theme', theme);
+                toggleButtons.forEach((button) => {
+                    const isActive = button.dataset.theme === theme;
+                    button.classList.toggle('is-active', isActive);
+                    button.setAttribute('aria-pressed', String(isActive));
+                });
+            }
+
+            let storedTheme = null;
+            try {
+                storedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+            } catch (error) {
+                storedTheme = null;
+            }
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const initialTheme = storedTheme || (prefersDark ? 'dark' : 'light');
+            applyTheme(initialTheme);
+
+            toggleButtons.forEach((button) => {
+                button.addEventListener('click', () => {
+                    const theme = button.dataset.theme;
+                    applyTheme(theme);
+                    try {
+                        localStorage.setItem(THEME_STORAGE_KEY, theme);
+                    } catch (error) {
+                        /* localStorage might be unavailable (e.g. privacy mode). */
+                    }
+                });
+            });
+        })();
+
+        (function () {
+            const nav = document.querySelector('.nav');
+            const toggle = document.querySelector('.nav-toggle');
+            if (!nav || !toggle) {
+                return;
+            }
+
+            function closeNav() {
+                toggle.setAttribute('aria-expanded', 'false');
+                nav.classList.remove('is-open');
+            }
+
+            toggle.addEventListener('click', () => {
+                const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+                const nextState = !isExpanded;
+                toggle.setAttribute('aria-expanded', String(nextState));
+                nav.classList.toggle('is-open', nextState);
+            });
+
+            nav.querySelectorAll('a').forEach((link) => {
+                link.addEventListener('click', () => {
+                    if (window.matchMedia('(max-width: 768px)').matches) {
+                        closeNav();
+                    }
+                });
+            });
+
+            const mq = window.matchMedia('(min-width: 769px)');
+            if (typeof mq.addEventListener === 'function') {
+                mq.addEventListener('change', closeNav);
+            } else if (typeof mq.addListener === 'function') {
+                mq.addListener(closeNav);
+            }
+
+            closeNav();
+        })();
+    </script>
+</body>
+</html>
