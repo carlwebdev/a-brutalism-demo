@@ -31,10 +31,13 @@
             <span class="nav-toggle__bar" aria-hidden="true"></span>
         </button>
         <nav class="nav" id="primary-navigation">
-            <a href="#">HOME</a>
-            <a href="#">ABOUT</a>
-            <a href="#">WORK</a>
-            <a href="#">CONTACT</a>
+            <a href="#hero">HOME</a>
+            <a href="#about">ABOUT</a>
+            <a href="#manifesto">MANIFESTO</a>
+            <a href="#process">PROCESS</a>
+            <a href="#products">WORK</a>
+            <a href="#contact">CONTACT</a>
+            <a href="styleguide.html">STYLEGUIDE</a>
         </nav>
         <menu class="theme-toggle" aria-label="Theme toggle">
             <button type="button" data-theme="light">LIGHT</button>
@@ -42,7 +45,7 @@
         </menu>
     </header>
     
-    <div class="hero">
+    <div class="hero" id="hero">
         <h1>BRUTAL<br>DESIGN</h1>
         <p>Raw. Unfiltered. Direct.</p>
     </div>
@@ -79,6 +82,71 @@
         <p>Join the movement →</p>
     </div>
 
+
+    <section class="manifesto" id="manifesto" aria-labelledby="manifesto-title">
+        <div class="manifesto-header">
+            <h2 id="manifesto-title">BRUTALIST MANIFESTO</h2>
+            <p>Documenting the non-negotiables that guide every experiment we ship.</p>
+        </div>
+        <div>
+            <ol class="manifesto-list">
+                <li>Amplify tension between order and chaos to make users feel something.</li>
+                <li>Expose the grid, the scaffolding, and the seams—transparency is the new polish.</li>
+                <li>Celebrate system glitches as signature moves, not bugs to be hidden.</li>
+            </ol>
+            <p class="manifesto-footnote">Updated whenever the collective evolves a new instinct.</p>
+        </div>
+    </section>
+
+    <section class="process" id="process" aria-labelledby="process-title">
+        <h2 id="process-title">PROCESS // BLUEPRINT</h2>
+        <div class="process-steps">
+            <article class="process-step">
+                <span>PHASE 01</span>
+                <h3>SIGNAL INTERFERENCE</h3>
+                <p>Harvest raw cultural noise, crowd-sourced screenshots, and analog scans to build an inspiration war-room.</p>
+            </article>
+            <article class="process-step">
+                <span>PHASE 02</span>
+                <h3>BRUTAL PROTOTYPING</h3>
+                <p>Compose overlapping frames, violent color splits, and broken typography to map emotional entry points.</p>
+            </article>
+            <article class="process-step">
+                <span>PHASE 03</span>
+                <h3>PUBLIC STRESS TEST</h3>
+                <p>Deploy live prototypes, invite friction, and tune micro-interactions while the world is watching.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="suggestions" id="suggestions" aria-labelledby="suggestions-title">
+        <div class="suggestions-header">
+            <h2 id="suggestions-title">WHAT TO SHOWCASE</h2>
+            <p>Essential content modules that give a brutalist interface the right amount of swagger.</p>
+        </div>
+        <div class="suggestions-grid">
+            <article class="suggestion-card">
+                <span>01</span>
+                <h3>DATA WALLS</h3>
+                <p>Live dashboards of community stats, drop schedules, or shipping delays keep the vibe transparent and kinetic.</p>
+            </article>
+            <article class="suggestion-card">
+                <span>02</span>
+                <h3>CASE NOISE</h3>
+                <p>Document projects like evidence boards—maps, scribbles, audio logs—to prove the process is gloriously messy.</p>
+            </article>
+            <article class="suggestion-card">
+                <span>03</span>
+                <h3>MATERIAL LIBRARY</h3>
+                <p>Texture scans, color swatches, and type stacks invite collaborators to remix the system without losing the attitude.</p>
+            </article>
+            <article class="suggestion-card">
+                <span>04</span>
+                <h3>FIELD NOTES</h3>
+                <p>Short-form essays, backstage photos, and manifesto updates keep followers plugged into the philosophy.</p>
+            </article>
+        </div>
+    </section>
 
     <section class="products" id="products" aria-labelledby="products-title">
         <div class="products-header">
@@ -134,7 +202,7 @@
         <div class="pixel-box"></div>
     </section>
 
-    <section class="brutal-form">
+    <section class="brutal-form" id="contact">
         <form>
             <input type="text" placeholder="YOUR NAME" class="brutal-input">
             <input type="email" placeholder="YOUR EMAIL" class="brutal-input">

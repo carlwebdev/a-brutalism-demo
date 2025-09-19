@@ -19,6 +19,9 @@ a:active {
     color-scheme: dark;
     --c-text: #fff;
     --c-bg: #000;
+    --c-accent: #f9ff3f;
+    --c-accent-strong: #ff0050;
+    --c-muted: #8f8f8f;
     --ff: 'Courier New', Courier, monospace;
 }
 
@@ -26,12 +29,18 @@ a:active {
     color-scheme: light;
     --c-text: #000;
     --c-bg: #fff;
+    --c-accent: #1116ff;
+    --c-accent-strong: #ff0050;
+    --c-muted: #5a5a5a;
 }
 
 :root[data-theme="dark"] {
     color-scheme: dark;
     --c-text: #fff;
     --c-bg: #000;
+    --c-accent: #f9ff3f;
+    --c-accent-strong: #ff0050;
+    --c-muted: #8f8f8f;
 }
 
 
@@ -447,6 +456,164 @@ section {
     outline-offset: 4px;
 }
 
+.manifesto {
+    border-block: 1px solid var(--c-text);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: clamp(2rem, 6vw, 4rem);
+    align-items: start;
+}
+
+.manifesto-header h2 {
+    font-size: clamp(32px, 6vw, 88px);
+    text-transform: uppercase;
+}
+
+.manifesto-header p {
+    font-size: clamp(16px, 2vw, 22px);
+    max-width: 32ch;
+    text-transform: uppercase;
+}
+
+.manifesto-list {
+    list-style: none;
+    counter-reset: manifesto-counter;
+    display: grid;
+    gap: 1.75rem;
+}
+
+.manifesto-list li {
+    counter-increment: manifesto-counter;
+    border: 2px solid var(--c-text);
+    padding: 1.5rem;
+    font-size: clamp(18px, 2.5vw, 26px);
+    font-weight: bold;
+    position: relative;
+    text-transform: uppercase;
+    background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent);
+}
+
+.manifesto-list li::before {
+    content: counter(manifesto-counter, decimal-leading-zero);
+    position: absolute;
+    top: -22px;
+    left: -22px;
+    background: var(--c-accent);
+    color: var(--c-bg);
+    border: 2px solid var(--c-text);
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+}
+
+.manifesto-footnote {
+    font-size: 0.875rem;
+    color: var(--c-muted);
+    text-transform: uppercase;
+    margin-top: 1rem;
+}
+
+.process {
+    border-block: 1px solid var(--c-text);
+}
+
+.process h2 {
+    font-size: clamp(32px, 6vw, 80px);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+}
+
+.process-steps {
+    display: grid;
+    gap: 1.5rem;
+    position: relative;
+}
+
+.process-step {
+    border: 2px solid var(--c-text);
+    padding: 1.75rem;
+    display: grid;
+    gap: 0.75rem;
+    background: var(--c-bg);
+}
+
+.process-step h3 {
+    font-size: clamp(20px, 3vw, 28px);
+    text-transform: uppercase;
+}
+
+.process-step p {
+    color: var(--c-muted);
+    font-size: 1rem;
+    max-width: 60ch;
+}
+
+.process-step span {
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--c-accent);
+}
+
+.suggestions {
+    border-block: 1px solid var(--c-text);
+}
+
+.suggestions-header {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.suggestions-header h2 {
+    font-size: clamp(32px, 5vw, 72px);
+    text-transform: uppercase;
+}
+
+.suggestions-header p {
+    font-size: clamp(16px, 2vw, 22px);
+    max-width: 46ch;
+    text-transform: uppercase;
+}
+
+.suggestions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.suggestion-card {
+    border: 2px solid var(--c-text);
+    padding: 1.75rem;
+    display: grid;
+    gap: 0.75rem;
+    background: var(--c-bg);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.suggestion-card:hover {
+    transform: translate(-6px, -6px);
+    box-shadow: 6px 6px 0 var(--c-text);
+}
+
+.suggestion-card h3 {
+    font-size: clamp(18px, 2.5vw, 26px);
+    text-transform: uppercase;
+}
+
+.suggestion-card p {
+    font-size: 0.95rem;
+    color: var(--c-muted);
+}
+
+.suggestion-card span {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    color: var(--c-accent);
+    text-transform: uppercase;
+}
+
 
 
 .grid {
@@ -471,7 +638,7 @@ section {
     padding: 20px;
     text-align: center;
     /* margin: 20px; */
-    border: 5px solid #000;
+    border: 5px solid var(--c-text);
     /* cursor: pointer; */
 
     border-top: 1px solid var(--c-text);
@@ -509,7 +676,7 @@ section {
 }
 
 .gallery-item {
-    border: 3px solid var(--accent-color);
+    border: 3px solid var(--c-text);
 
 
 
@@ -587,19 +754,17 @@ section {
     /* border: 3px solid var(--text-color); */
     font-family: inherit;
     font-size: 18px;
-    background: var(--background-color);
-
-
+    background: var(--c-bg);
+    color: var(--c-text);
     border: 1px solid var(--c-text);
-
 }
 
 .brutal-button {
     width: 100%;
     padding: 20px;
-    background: var(--accent-color);
-    border: 3px solid var(--text-color);
-    color: var(--text-color);
+    background: var(--c-accent);
+    border: 3px solid var(--c-text);
+    color: var(--c-bg);
     font-size: 24px;
     cursor: pointer;
     transition: transform 0.2s;
@@ -607,7 +772,7 @@ section {
 
 .brutal-button:hover {
     transform: translate(-5px, -5px);
-    box-shadow: 5px 5px 0 var(--text-color);
+    box-shadow: 5px 5px 0 var(--c-text);
 }
 
 
@@ -657,7 +822,7 @@ section {
     border-top: 1px solid var(--c-text);
     background-color: var(--c-bg);
     color: var(--c-text);
-    
+
     padding-inline: 3em;
     /* padding-inline: 6em; */
     /* padding-block: 3em;*/
@@ -671,7 +836,7 @@ section {
     gap: 40px;
 
     /* padding-block: 6em; */
-    padding-block: 4em; 
+    padding-block: 4em;
 }
 
 .footer-item a {
@@ -686,5 +851,143 @@ section {
 
 .footer-bottom {
     /* border-top: 1px solid var(--c-text); */
-    padding-block: 2em;  
+    padding-block: 2em;
+}
+
+.styleguide-main {
+    padding-inline: clamp(2rem, 8vw, 6rem);
+    padding-block: clamp(3rem, 8vw, 6rem);
+    display: grid;
+    gap: clamp(3rem, 6vw, 4.5rem);
+}
+
+.styleguide-main h1 {
+    font-size: clamp(40px, 8vw, 96px);
+    text-transform: uppercase;
+}
+
+.styleguide-main p {
+    max-width: 62ch;
+}
+
+.styleguide-section {
+    border: 2px solid var(--c-text);
+    padding: clamp(1.5rem, 5vw, 3rem);
+    background: var(--c-bg);
+    display: grid;
+    gap: 1.5rem;
+}
+
+.styleguide-section h2 {
+    font-size: clamp(24px, 5vw, 48px);
+    text-transform: uppercase;
+}
+
+.swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem;
+}
+
+.swatch {
+    border: 2px solid var(--c-text);
+    padding: 1.5rem 1rem;
+    display: grid;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.swatch.is-dark {
+    background: #000;
+    color: #fff;
+}
+
+.swatch.is-light {
+    background: #fff;
+    color: #000;
+}
+
+.swatch.is-accent {
+    background: var(--c-accent);
+    color: var(--c-bg);
+}
+
+.type-stack {
+    display: grid;
+    gap: 1rem;
+}
+
+.type-sample {
+    border: 2px solid var(--c-text);
+    padding: 1.5rem;
+    display: grid;
+    gap: 0.75rem;
+}
+
+.type-sample span {
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--c-muted);
+}
+
+.component-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+}
+
+.component-preview {
+    border: 2px solid var(--c-text);
+    padding: 1.5rem;
+    display: grid;
+    gap: 1rem;
+}
+
+.component-preview h3 {
+    font-size: 1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.component-preview .demo-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.component-preview .demo-buttons button,
+.component-preview .demo-buttons a {
+    border: 2px solid var(--c-text);
+    padding: 0.75rem 1.5rem;
+    background: var(--c-bg);
+    text-transform: uppercase;
+    font-weight: bold;
+    color: var(--c-text);
+    cursor: pointer;
+}
+
+.component-preview .demo-buttons button.is-accent,
+.component-preview .demo-buttons a.is-accent {
+    background: var(--c-accent);
+    color: var(--c-bg);
+}
+
+.component-preview .demo-card {
+    border: 2px solid var(--c-text);
+    padding: 1rem;
+    display: grid;
+    gap: 0.5rem;
+    background-image: repeating-linear-gradient(135deg, transparent 0 10px, rgba(255, 255, 255, 0.05) 10px 20px);
+}
+
+.styleguide-callout {
+    border: 2px dashed var(--c-text);
+    padding: 1.5rem;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    display: grid;
+    gap: 0.5rem;
 }
