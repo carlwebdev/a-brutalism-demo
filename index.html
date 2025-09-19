@@ -21,7 +21,7 @@
         })();
     </script>
 </head>
-<body>
+<body id="top">
 
     <header>
         <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="primary-navigation">
@@ -31,10 +31,10 @@
             <span class="nav-toggle__bar" aria-hidden="true"></span>
         </button>
         <nav class="nav" id="primary-navigation">
-            <a href="#">HOME</a>
-            <a href="#">ABOUT</a>
-            <a href="#">WORK</a>
-            <a href="#">CONTACT</a>
+            <a href="#top">HOME</a>
+            <a href="#about">ABOUT</a>
+            <a href="#projects">WORK</a>
+            <a href="#contact">CONTACT</a>
         </nav>
         <menu class="theme-toggle" aria-label="Theme toggle">
             <button type="button" data-theme="light">LIGHT</button>
@@ -78,6 +78,99 @@
         <h2>EMBRACE THE BRUTAL</h2>
         <p>Join the movement →</p>
     </div>
+
+
+
+
+    <section class="projects" id="projects" aria-labelledby="projects-title">
+        <div class="projects-header">
+            <h2 id="projects-title">PROJECT ARCHIVE</h2>
+            <p>Selected collaborations arranged by the chaos they unleashed.</p>
+        </div>
+        <div class="projects-grid">
+            <article class="project-category">
+                <h3>DIGITAL INTERFACES</h3>
+                <p class="project-category-description">Web experiences for brands that refuse to whisper.</p>
+                <ul class="project-list">
+                    <li class="project-item">
+                        <div>
+                            <strong>Static Pulse Platform</strong>
+                            <p class="project-tags">E-commerce · Motion UX</p>
+                        </div>
+                        <span class="project-year">2024</span>
+                    </li>
+                    <li class="project-item">
+                        <div>
+                            <strong>Greywave Newsroom</strong>
+                            <p class="project-tags">Editorial · Accessibility</p>
+                        </div>
+                        <span class="project-year">2023</span>
+                    </li>
+                    <li class="project-item">
+                        <div>
+                            <strong>Voltage CRM</strong>
+                            <p class="project-tags">SaaS · System Design</p>
+                        </div>
+                        <span class="project-year">2022</span>
+                    </li>
+                </ul>
+            </article>
+            <article class="project-category">
+                <h3>BRAND WORLDS</h3>
+                <p class="project-category-description">Identity systems built with concrete grids and raw type.</p>
+                <ul class="project-list">
+                    <li class="project-item">
+                        <div>
+                            <strong>Obsidian Athletics</strong>
+                            <p class="project-tags">Branding · Campaign</p>
+                        </div>
+                        <span class="project-year">2024</span>
+                    </li>
+                    <li class="project-item">
+                        <div>
+                            <strong>Iconoclast Studios</strong>
+                            <p class="project-tags">Strategy · Art Direction</p>
+                        </div>
+                        <span class="project-year">2023</span>
+                    </li>
+                    <li class="project-item">
+                        <div>
+                            <strong>Sever &amp; Co.</strong>
+                            <p class="project-tags">Identity · Packaging</p>
+                        </div>
+                        <span class="project-year">2022</span>
+                    </li>
+                </ul>
+            </article>
+            <article class="project-category">
+                <h3>IMMERSIVE INSTALLATIONS</h3>
+                <p class="project-category-description">Physical-digital hybrids that light up brutalist spaces.</p>
+                <ul class="project-list">
+                    <li class="project-item">
+                        <div>
+                            <strong>Neon Verge Pavilion</strong>
+                            <p class="project-tags">Interactive · Sound Design</p>
+                        </div>
+                        <span class="project-year">2023</span>
+                    </li>
+                    <li class="project-item">
+                        <div>
+                            <strong>Concrete Chorus</strong>
+                            <p class="project-tags">Projection · Public Art</p>
+                        </div>
+                        <span class="project-year">2022</span>
+                    </li>
+                    <li class="project-item">
+                        <div>
+                            <strong>Signal Warden</strong>
+                            <p class="project-tags">AR · Performance</p>
+                        </div>
+                        <span class="project-year">2021</span>
+                    </li>
+                </ul>
+            </article>
+        </div>
+    </section>
 
 
     <section class="products" id="products" aria-labelledby="products-title">
@@ -134,7 +227,7 @@
         <div class="pixel-box"></div>
     </section>
 
-    <section class="brutal-form">
+    <section class="brutal-form" id="contact">
         <form>
             <input type="text" placeholder="YOUR NAME" class="brutal-input">
             <input type="email" placeholder="YOUR EMAIL" class="brutal-input">
