@@ -59,17 +59,13 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 6em; /* PRECAUTION */
+    flex-wrap: wrap;
+    gap: 2.5em;
+    padding: 1.5em clamp(1.5rem, 6vw, 4rem);
 
     background-color: var(--c-bg);
     /* background-color: var(--c-text); */
     border-bottom: 1px solid var(--c-text);
-    /*
-    padding-inline: 3em;
-    padding-inline: 6em;
-    */
-    
-    
 }
 
 
@@ -84,7 +80,8 @@ menu {
 
 nav.nav a,
 menu a,
-menu button {
+menu button,
+.social-links a {
     background-color: var(--c-bg);
     color: var(--c-text);
     text-decoration: none;
@@ -98,6 +95,25 @@ menu button {
     border: 1px solid var(--c-text);
     border-right: 0;
     transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.social-links {
+    display: flex;
+    gap: 2px;
+    padding: 2px;
+    list-style: none;
+}
+
+.social-links a {
+    width: 78px;
+    height: 78px;
+    padding: 0;
+}
+
+.social-links svg {
+    width: 32px;
+    height: 32px;
+    fill: currentColor;
 }
 
 .sr-only {
@@ -149,7 +165,8 @@ menu button {
 
 nav.nav a:not(:last-child),
 menu a:not(:last-child),
-menu button:not(:last-child) {
+menu button:not(:last-child),
+.social-links a:not(:last-child) {
     border-right: 1px solid var(--c-text);
 }
 
@@ -226,6 +243,18 @@ menu button {
 
     .theme-toggle button:last-child {
         border-bottom: 0;
+    }
+
+    .social-links {
+        align-self: flex-end;
+        border: 1px solid var(--c-text);
+        width: auto;
+        padding: 0;
+    }
+
+    .social-links a {
+        width: 64px;
+        height: 64px;
     }
 }
 
@@ -852,6 +881,13 @@ section {
 .footer-bottom {
     /* border-top: 1px solid var(--c-text); */
     padding-block: 2em;
+}
+
+.footer-ad {
+    font-size: clamp(16px, 2vw, 20px);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 0.75em;
 }
 
 .styleguide-main {
