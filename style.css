@@ -59,17 +59,25 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 6em; /* PRECAUTION */
+    gap: clamp(1.5rem, 5vw, 6em);
+    flex-wrap: wrap;
 
     background-color: var(--c-bg);
-    /* background-color: var(--c-text); */
     border-bottom: 1px solid var(--c-text);
-    /*
-    padding-inline: 3em;
-    padding-inline: 6em;
-    */
-    
-    
+}
+
+.site-logo {
+    display: inline-flex;
+    align-items: center;
+    padding-inline: clamp(1.5rem, 5vw, 6em);
+    text-decoration: none;
+    color: inherit;
+    font-size: clamp(1.125rem, 2.5vw, 1.75rem);
+    font-weight: 700;
+    letter-spacing: 0.3rem;
+    text-transform: uppercase;
+    white-space: nowrap;
+    margin-right: auto;
 }
 
 
@@ -156,6 +164,18 @@ menu button:not(:last-child) {
 menu button {
     font: inherit;
     cursor: pointer;
+}
+
+.theme-toggle {
+    padding-inline: clamp(0.5rem, 2vw, 1.5rem);
+    flex-wrap: nowrap;
+}
+
+.theme-toggle button {
+    padding: 1em 2em;
+    min-width: 0;
+    white-space: nowrap;
+    font-size: clamp(1rem, 2vw, 1.25rem);
 }
 
 .theme-toggle button.is-active {
