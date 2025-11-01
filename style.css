@@ -242,6 +242,10 @@ menu button {
 
     .theme-toggle button {
         border-bottom: 1px solid var(--c-text);
+        padding-block: 0.75em;
+        padding-inline: 1.25em;
+        font-size: clamp(0.875rem, 4vw, 1rem);
+        letter-spacing: 0.05em;
     }
 
     .theme-toggle button:last-child {
