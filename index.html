@@ -307,13 +307,13 @@
 
             nav.querySelectorAll('a').forEach((link) => {
                 link.addEventListener('click', () => {
-                    if (window.matchMedia('(max-width: 768px)').matches) {
+                    if (window.matchMedia('(max-width: 1024px)').matches) {
                         closeNav();
                     }
                 });
             });
 
-            const mq = window.matchMedia('(min-width: 769px)');
+            const mq = window.matchMedia('(min-width: 1025px)');
             if (typeof mq.addEventListener === 'function') {
                 mq.addEventListener('change', closeNav);
             } else if (typeof mq.addListener === 'function') {
