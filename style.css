@@ -188,18 +188,25 @@ menu button {
     outline-offset: 4px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     header {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 1.5em;
-        padding: 1.5em;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.75em;
+        justify-content: flex-start;
+        padding: 1.25em 1.5em;
+    }
+
+    .site-logo {
+        flex: 1 1 auto;
+        padding-inline: 0;
     }
 
     .nav-toggle {
         display: inline-flex;
-        align-self: flex-end;
-        padding: 1em;
+        order: 2;
+        flex-shrink: 0;
+        padding: 0.85em;
     }
 
     nav.nav,
@@ -210,8 +217,10 @@ menu button {
 
     nav.nav {
         display: none;
+        flex-basis: 100%;
         flex-direction: column;
         border: 1px solid var(--c-text);
+        order: 4;
     }
 
     nav.nav.is-open {
@@ -220,10 +229,10 @@ menu button {
 
     nav.nav a,
     menu button {
-        padding: 1.25em;
-        width: 100%;
         border: 0;
         border-right: none;
+        padding: 1.1em 1.25em;
+        width: 100%;
     }
 
     nav.nav a {
@@ -235,17 +244,40 @@ menu button {
     }
 
     .theme-toggle {
-        gap: 0;
+        align-items: center;
         border: 1px solid var(--c-text);
-        flex-direction: column;
+        display: inline-flex;
+        flex-shrink: 0;
+        gap: 0;
+        order: 3;
+        padding: 0.35em;
+        width: auto;
     }
 
     .theme-toggle button {
-        border-bottom: 1px solid var(--c-text);
+        border: 0;
+        font-size: 0.875rem;
+        padding: 0.6em 0.9em;
+        width: auto;
     }
 
-    .theme-toggle button:last-child {
-        border-bottom: 0;
+    .theme-toggle button + button {
+        border-left: 1px solid var(--c-text);
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        padding: 1em;
+    }
+
+    .theme-toggle {
+        padding: 0.25em;
+    }
+
+    .theme-toggle button {
+        font-size: 0.75rem;
+        padding: 0.45em 0.7em;
     }
 }
 
