@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <title>Brutal Design</title>
     <style>
 
@@ -23,28 +23,7 @@
 </head>
 <body>
 
-    <header>
-        <a href="#hero" class="site-logo">BRUTALISM DEMO</a>
-        <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="primary-navigation">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="nav-toggle__bar" aria-hidden="true"></span>
-            <span class="nav-toggle__bar" aria-hidden="true"></span>
-            <span class="nav-toggle__bar" aria-hidden="true"></span>
-        </button>
-        <nav class="nav" id="primary-navigation">
-            <a href="#hero">HOME</a>
-            <a href="#about">ABOUT</a>
-            <a href="#manifesto">MANIFESTO</a>
-            <a href="#process">PROCESS</a>
-            <a href="#products">WORK</a>
-            <a href="#contact">CONTACT</a>
-            <a href="styleguide.html">STYLEGUIDE</a>
-        </nav>
-        <menu class="theme-toggle" aria-label="Theme toggle">
-            <button type="button" data-theme="light">LIGHT</button>
-            <button type="button" data-theme="dark">DARK</button>
-        </menu>
-    </header>
+    <header data-site-header></header>
     
     <div class="hero" id="hero">
         <h1>BRUTAL<br>DESIGN</h1>
@@ -248,81 +227,7 @@
 
 
 
-    <script>
-        (function () {
-            const THEME_STORAGE_KEY = 'theme';
-            const root = document.documentElement;
-            const toggleButtons = document.querySelectorAll('.theme-toggle [data-theme]');
-
-            function applyTheme(theme) {
-                root.setAttribute('data-theme', theme);
-                toggleButtons.forEach((button) => {
-                    const isActive = button.dataset.theme === theme;
-                    button.classList.toggle('is-active', isActive);
-                    button.setAttribute('aria-pressed', String(isActive));
-                });
-            }
-
-            let storedTheme = null;
-            try {
-                storedTheme = localStorage.getItem(THEME_STORAGE_KEY);
-            } catch (error) {
-                storedTheme = null;
-            }
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            const initialTheme = storedTheme || (prefersDark ? 'dark' : 'light');
-            applyTheme(initialTheme);
-
-            toggleButtons.forEach((button) => {
-                button.addEventListener('click', () => {
-                    const theme = button.dataset.theme;
-                    applyTheme(theme);
-                    try {
-                        localStorage.setItem(THEME_STORAGE_KEY, theme);
-                    } catch (error) {
-                        /* localStorage might be unavailable (e.g. privacy mode). */
-                    }
-                });
-            });
-        })();
-
-        (function () {
-            const nav = document.querySelector('.nav');
-            const toggle = document.querySelector('.nav-toggle');
-            if (!nav || !toggle) {
-                return;
-            }
-
-            function closeNav() {
-                toggle.setAttribute('aria-expanded', 'false');
-                nav.classList.remove('is-open');
-            }
-
-            toggle.addEventListener('click', () => {
-                const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
-                const nextState = !isExpanded;
-                toggle.setAttribute('aria-expanded', String(nextState));
-                nav.classList.toggle('is-open', nextState);
-            });
-
-            nav.querySelectorAll('a').forEach((link) => {
-                link.addEventListener('click', () => {
-                    if (window.matchMedia('(max-width: 1024px)').matches) {
-                        closeNav();
-                    }
-                });
-            });
-
-            const mq = window.matchMedia('(min-width: 1025px)');
-            if (typeof mq.addEventListener === 'function') {
-                mq.addEventListener('change', closeNav);
-            } else if (typeof mq.addListener === 'function') {
-                mq.addListener(closeNav);
-            }
-
-            closeNav();
-        })();
-    </script>
+    <script src="assets/js/shared-header.js"></script>
 
 </body>
 </html>

@@ -59,17 +59,18 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: clamp(1.5rem, 5vw, 6em);
-    flex-wrap: wrap;
+    gap: clamp(0.75rem, 2vw, 2rem);
+    flex-wrap: nowrap;
 
     background-color: var(--c-bg);
     border-bottom: 1px solid var(--c-text);
+    padding-inline: clamp(1rem, 2vw, 2rem);
 }
 
 .site-logo {
     display: inline-flex;
     align-items: center;
-    padding-inline: clamp(1.5rem, 5vw, 6em);
+    padding-inline: 0;
     text-decoration: none;
     color: inherit;
     font-size: clamp(1.125rem, 2.5vw, 1.75rem);
@@ -77,17 +78,25 @@ header {
     letter-spacing: 0.3rem;
     text-transform: uppercase;
     white-space: nowrap;
-    margin-right: auto;
+    flex: 0 0 auto;
 }
 
 
 nav.nav,
 menu {
-    padding-inline: 6em;
+    padding-inline: 0;
     display: flex;
     gap: 2px;
     padding: 2px;
     list-style: none;
+}
+
+nav.nav {
+    flex: 1 1 auto;
+    min-width: 0;
+    justify-content: center;
+    overflow-x: auto;
+    scrollbar-width: thin;
 }
 
 nav.nav a,
@@ -96,16 +105,20 @@ menu button {
     background-color: var(--c-bg);
     color: var(--c-text);
     text-decoration: none;
-    font-size: 24px;
+    font-size: clamp(0.8rem, 1.1vw, 1rem);
     font-weight: bold;
-    padding: 2em 3em;
+    padding: 0.85em 1.1em;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     text-transform: uppercase;
     border: 1px solid var(--c-text);
-    border-right: 0;
     transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav.nav a:hover,
+.theme-toggle button:hover {
+    text-decoration: underline;
 }
 
 .sr-only {
@@ -155,10 +168,10 @@ menu button {
     transform: translateY(-8px) rotate(-45deg);
 }
 
-nav.nav a:not(:last-child),
-menu a:not(:last-child),
-menu button:not(:last-child) {
-    border-right: 1px solid var(--c-text);
+nav.nav a + a,
+menu a + a,
+menu button + button {
+    border-left: 0;
 }
 
 menu button {
@@ -167,15 +180,16 @@ menu button {
 }
 
 .theme-toggle {
-    padding-inline: clamp(0.5rem, 2vw, 1.5rem);
+    padding-inline: 0;
     flex-wrap: nowrap;
+    flex: 0 0 auto;
 }
 
 .theme-toggle button {
-    padding: 1em 2em;
+    padding: 0.85em 1.1em;
     min-width: 0;
     white-space: nowrap;
-    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-size: clamp(0.8rem, 1.1vw, 1rem);
 }
 
 .theme-toggle button.is-active {
@@ -191,56 +205,46 @@ menu button {
 @media (max-width: 1024px) {
     header {
         align-items: center;
-        flex-wrap: wrap;
-        gap: 0.75em;
-        justify-content: flex-start;
-        padding: 1.25em 1.5em;
+        flex-wrap: nowrap;
+        gap: 0.5em;
+        justify-content: space-between;
+        padding: 0.75em 1em;
     }
 
     .site-logo {
-        flex: 1 1 auto;
-        padding-inline: 0;
+        flex: 0 0 auto;
+        font-size: clamp(0.85rem, 1.7vw, 1.05rem);
+        letter-spacing: 0.15rem;
     }
 
     .nav-toggle {
-        display: inline-flex;
-        order: 2;
-        flex-shrink: 0;
-        padding: 0.85em;
+        display: none;
     }
 
     nav.nav,
     menu {
-        padding-inline: 0;
-        width: 100%;
+        width: auto;
     }
 
     nav.nav {
-        display: none;
-        flex-basis: 100%;
-        flex-direction: column;
-        border: 1px solid var(--c-text);
-        order: 4;
-    }
-
-    nav.nav.is-open {
         display: flex;
+        flex-direction: row;
+        border: 0;
+        overflow-x: auto;
+        justify-content: center;
     }
 
     nav.nav a,
     menu button {
-        border: 0;
-        border-right: none;
-        padding: 1.1em 1.25em;
-        width: 100%;
+        border: 1px solid var(--c-text);
+        padding: 0.7em 0.8em;
+        width: auto;
+        font-size: 0.75rem;
     }
 
-    nav.nav a {
-        border-bottom: 1px solid var(--c-text);
-    }
-
-    nav.nav a:last-child {
-        border-bottom: 0;
+    nav.nav a + a,
+    menu button + button {
+        border-left: 0;
     }
 
     .theme-toggle {
@@ -249,26 +253,25 @@ menu button {
         display: inline-flex;
         flex-shrink: 0;
         gap: 0;
-        order: 3;
         padding: 0.35em;
         width: auto;
     }
 
     .theme-toggle button {
-        border: 0;
-        font-size: 0.875rem;
-        padding: 0.6em 0.9em;
+        border: 1px solid var(--c-text);
+        font-size: 0.75rem;
+        padding: 0.7em 0.8em;
         width: auto;
     }
 
     .theme-toggle button + button {
-        border-left: 1px solid var(--c-text);
+        border-left: 0;
     }
 }
 
 @media (max-width: 600px) {
     header {
-        padding: 1em;
+        padding: 0.5em;
     }
 
     .theme-toggle {
